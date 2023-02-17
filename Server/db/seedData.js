@@ -11,11 +11,6 @@ const {
   getUser,
   getUserByEmail,
   getAllUsers,
-  updateUser,
-  updateUserPassword,
-
-  // attachServicesToUser,
-  // attachBundleToUser,
 } = require('./users');
 
 async function dropTables() {
@@ -45,6 +40,7 @@ async function createTables() {
         password varchar(255) NOT NULL,
         address varchar(255) NOT NULL,
         email varchar(255) NOT NULL,
+        preorderinfo varchar(255) NOT NULL,
         isadmin BOOLEAN DEFAULT false,
         UNIQUE (username, email)
       );
@@ -65,6 +61,7 @@ async function createFakeUsers() {
         password: 'rachaela1!',
         address: '1234 Street St',
         email: 'rachaela@gmail.com',
+        preorderinfo: 'I would like to preorder the spanking bench',
       },
       {
         name: 'Rus',
@@ -72,6 +69,7 @@ async function createFakeUsers() {
         password: 'rus1!',
         address: '1234 Lane Ln',
         email: 'rus@gmail.com',
+        preorderinfo: 'Looking to preorder the punishment pew',
       },
       {
         name: 'Philip',
@@ -79,6 +77,7 @@ async function createFakeUsers() {
         password: 'philip1!',
         address: '1234 Avenue Ave',
         email: 'philip@gmail.com',
+        preorderinfo: 'I need some spanking paddles',
       },
     ];
     const users = await Promise.all(fakeUsers.map(createUser));
